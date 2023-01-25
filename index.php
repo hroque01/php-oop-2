@@ -74,7 +74,7 @@
 
         }
 
-        public function getKennelsHTML()
+        public function getFoodHTML()
         {
             return parent::getHTML()
                 . $this->getFoodType();
@@ -88,15 +88,50 @@
     }
 
     // Kennels print in html
-    $kennels = new Kennels("Cane", "120 EUR", "Plastica", "XXL");
+    $kennelDog = new Kennels("Cane", "120 EUR", "Plastica", "XXL");
+    $kennelCat = new Kennels("Gatto", "30 EUR", "Stoffa", null);
+
+    // Food print in html
+    $foodDog = new Food("Cane", "3.99 EUR", "Pate di pollo e riso", "XXL");
+    $foodCat = new Food("Cat", "4.99 EUR", "Crocchetta di carne di coniglio", null)
 
 
-    ?>
+        ?>
     <div class="container">
-        <div class="row">
-            <div class="card d-flex align-items-center" style="width: 30%;">
+        <div class="row  d-flex align-items-center" style="gap: 30px;">
+            <div class="card" style="width: 30%;">
                 <h1> Cuccia per cani </h1>
-                <?php echo $kennels->getKennelsHTML(); ?>
+
+                <!-- Kennel for dog -->
+                <span>
+                    <?php echo $kennelDog->getKennelsHTML(); ?>
+                </span>
+            </div>
+            <div class="card" style="width: 30%;">
+                <h1> Cuccia per gatti </h1>
+
+                <!-- Kennel for cat -->
+                <span>
+                    <?php echo $kennelCat->getKennelsHTML(); ?>
+                </span>
+            </div>
+        </div>
+        <div class="row  d-flex align-items-center my-5" style="gap: 30px;">
+            <div class="card" style="width: 30%;">
+                <h1> Cibo per cani </h1>
+
+                <!-- Kennel for dog -->
+                <span>
+                    <?php echo $foodDog->getFoodHTML(); ?>
+                </span>
+            </div>
+            <div class="card" style="width: 30%;">
+                <h1> Cibo per gatti </h1>
+
+                <!-- Kennel for cat -->
+                <span>
+                    <?php echo $foodCat->getFoodHTML(); ?>
+                </span>
             </div>
         </div>
     </div>
