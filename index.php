@@ -1,68 +1,95 @@
-<?php
-class Products
-{
-    public $animal;
+<!DOCTYPE html>
+<html lang="en">
 
-    public function __construct($animal)
+<head>
+    <!-- link bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <?php
+    class Products
     {
-        $this->animal = $animal;
+        public $animal;
+        public $price;
+
+        public function __construct($animal, $price)
+        {
+            $this->animal = $animal;
+            $this->price = $price;
+        }
+
+        public function getHTML()
+        {
+            return "<h3>Animale: " . $this->animal . "<br>"
+                . "Prezzo: " . $this->price . "</br>";
+        }
+
+    }
+    class Kennels extends Products
+    {
+        public $materials;
+        public $size;
+
+
+        public function __construct($animal, $price, $materials, $size)
+        {
+
+            parent::__construct($animal, $price);
+
+            $this->materials = $materials;
+            $this->size = $size;
+
+        }
+
+        public function getKennelsHTML()
+        {
+            return parent::getHTML()
+                . $this->getKennels();
+        }
+
+        public function getKennels()
+        {
+            return "Materiale: " . $this->materials . "<br>"
+                . "Taglia: " . $this->size . "</h3>";
+        }
+
     }
 
-    public function getHTML()
+    class Food extends Products
     {
-        return "<h1>" . $this->animal . "</h1>";
+        public $type;
+        public $expiration;
+
+        public function __construct($animal, $price, $type, $expiration)
+        {
+            parent::__construct($animal, $price);
+
+            $this->type = $type;
+            $this->expiration = $expiration;
+
+        }
     }
 
-}
-class Kennels extends Products
-{
-    public $materials;
-    public $size;
-    public $price;
+    // Kennels print in html
+    $kennels = new Kennels("Cane", "120 EUR", "Plastica", "XXL");
 
-    public function __construct($animal, $materials, $size, $price)
-    {
 
-        parent::__construct($animal);
+    ?>
+    <div class="container">
+        <div class="row">
+            <div class="card d-flex align-items-center" style="width: 30%;">
+                <h1> Cuccia per cani </h1>
+                <?php echo $kennels->getKennelsHTML(); ?>
+            </div>
+        </div>
+    </div>
 
-        $this->materials = $materials;
-        $this->size = $size;
-        $this->price = $price;
 
-    }
+</body>
 
-    public function getKennelsHTML()
-    {
-        return parent::getHTML()
-            . $this->getKennels();
-    }
-
-    public function getKennels()
-    {
-        return "<h3>Materiale: " . $this->materials . "<br>"
-            . "Taglia: " . $this->size . "<br>"
-            . "Prezzo: " . $this->price . "</h3>";
-    }
-
-}
-
-class Foods extends Products
-{
-    public $dryfood;
-    public $pate;
-    public $prize;
-    public $brand;
-
-}
-
-class Games extends Products
-{
-    public $tennisball;
-    public $scratchingpost;
-}
-
-// Kennels print in html
-$kennels = new Kennels("Cane", "Plastica", "XXL", "120 EUR");
-echo $kennels->getKennelsHTML();
-
-?>
+</html>
