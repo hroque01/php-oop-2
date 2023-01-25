@@ -92,8 +92,8 @@
     $kennelCat = new Kennels("Gatto", "30 EUR", "Stoffa", null);
 
     // Food print in html
-    $foodDog = new Food("Cane", "3.99 EUR", "Pate di pollo e riso", "XXL");
-    $foodCat = new Food("Cat", "4.99 EUR", "Crocchetta di carne di coniglio", null)
+    $foodDog = new Food("Cane", "3.99 EUR", "Pate di pollo e riso", "04-07-2024");
+    $foodCat = new Food("Cat", "4.99 EUR", "Crocchetta di carne di coniglio", "25-05-23")
 
 
         ?>
