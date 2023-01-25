@@ -73,6 +73,18 @@
             $this->expiration = $expiration;
 
         }
+
+        public function getKennelsHTML()
+        {
+            return parent::getHTML()
+                . $this->getFoodType();
+        }
+
+        public function getFoodType()
+        {
+            return "Tipo di cibo: " . $this->type . "<br>"
+                . "Scadenza: " . $this->expiration . "</h3>";
+        }
     }
 
     // Kennels print in html
