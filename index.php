@@ -1,11 +1,21 @@
 <?php
 class Products
 {
-    public $dogs;
-    public $cats;
+    public $animal;
+
+    public function __construct($animal)
+    {
+        $this->animal = $animal;
+    }
+
+    public function getHTML()
+    {
+        return "<h1>" . $this->animal . "</h1>";
+    }
 
 }
-
+$products = new Products("cane");
+echo $products->getHTML();
 class Kennels extends Products
 {
     public $materials;
@@ -27,3 +37,5 @@ class Games extends Products
     public $tennisball;
     public $scratchingpost;
 }
+
+?>
